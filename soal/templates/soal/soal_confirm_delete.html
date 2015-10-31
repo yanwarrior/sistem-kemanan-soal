@@ -1,0 +1,14 @@
+{% extends 'soal/base.html' %}
+
+
+{# CONTENT #}
+{% block content %}
+{% if object.guru.username.username == auth_member %}
+<form action="" method="post">{% csrf_token %}
+    <p>Are you sure you want to delete "{{ object }}"?</p>
+    <input type="submit" value="Confirm" />
+</form>
+{% else %}
+<p>Tidak ada soal yang dapat dihapus <a href="{% url 'soal:soal-view' %}">Kembali</a></p>
+{% endif %}
+{% endblock %}

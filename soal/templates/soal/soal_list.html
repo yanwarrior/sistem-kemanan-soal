@@ -1,0 +1,32 @@
+{% extends 'soal/base.html' %}
+
+{# untuk blok title #}
+{% block title %}
+{{ guru }} - List Soal Guru 
+{% endblock %}
+
+{# untuk block content #}
+{% block content %}
+<table border='1'>
+    <caption>List Soal - {{ request.user.username }}</caption>
+    <tr>
+        <th>No</th>
+        <th>Soal</th>
+        <th>Tanggal</th>
+        <th>Status</th>
+        <th>Aksi</th>
+    </tr>
+{% for soal in soal_list %}
+    <tr>
+        <td>{{ forloop.counter }}</td>
+        <td>{{ soal.file_soal.name }}</td>
+        <td>{{ soal.tanggal|date:"D, d/M/Y" }}</td>
+        <td>{{ soal.status }}</th>
+        <td>
+            <a href="{% url 'soal:soal-delete' pk=soal.id %}"><b>Delete</b></a>
+        </td>
+    </tr>
+{% endfor %}
+</table>
+{% endblock %}
+
