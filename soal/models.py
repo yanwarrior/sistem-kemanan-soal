@@ -1,5 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.utils.html import format_html
+from django.conf import settings
 
 
 class Kelas(models.Model):
@@ -84,6 +86,19 @@ class Soal(models.Model):
     def list_display_ukuran_file_soal(self):
         return "{:.2f} Kb".format(float(self.file_soal.size) / 1024)
     list_display_ukuran_file_soal.short_description = "Ukuran"
+
+    def list_display_download_soal(self):
+        if self.status:
+            html = """
+                <a href="{}" target='_blank'>Unduh Soal</a>
+            """.format(settings.MEDIA_URL + self.file_soal.name)
+        else:
+            html = """
+            <a href="{}" target='_blank' onclick='alert("file ini belum di dekripsi !")'>Unduh Soal</a>
+            """.format(settings.MEDIA_URL + self.file_soal.name)
+        return format_html(html)
+    list_display_download_soal.short_description = "Unduh"
+    list_display_download_soal.allow_tag = True
     
     def __str__(self):
         return self.file_soal.name

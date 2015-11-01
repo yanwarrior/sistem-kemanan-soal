@@ -41,12 +41,13 @@ class ModelAdminSoal(ModelAdmin):
     list_display = [
         'list_display_nama_soal', 'list_display_tipe_file_soal',
         'list_display_ukuran_file_soal','tanggal', 'list_display_pemilik_soal',
-        'list_display_status_dekripsi_soal',
+        'list_display_status_dekripsi_soal','list_display_download_soal',
     ]
 
     list_filter = ['tanggal', 'guru', 'status']
     
     view_on_site = False
+    list_display_links = None
     exclude = ('file_soal', 'guru',)
     actions = ['action_admin_dekripsi_soal']
 
