@@ -63,6 +63,27 @@ class Soal(models.Model):
 
     def type_file(self):
         return self.file_soal.name.split(".")[-1]
+
+    def list_display_nama_soal(self):
+        return self.file_soal.name.split("/")[-1]
+    list_display_nama_soal.short_description = "Soal"
+
+    def list_display_tipe_file_soal(self):
+        return self.file_soal.name.split(".")[-1]
+    list_display_tipe_file_soal.short_description = "Tipe File"
+
+    def list_display_pemilik_soal(self):
+        return self.guru.username.username
+    list_display_pemilik_soal.short_description = "Guru"
+
+    def list_display_status_dekripsi_soal(self):
+        return self.status
+    list_display_status_dekripsi_soal.short_description = "Status Dekripsi ?"
+    list_display_status_dekripsi_soal.boolean = True
+
+    def list_display_ukuran_file_soal(self):
+        return "{:.2f} Kb".format(float(self.file_soal.size) / 1024)
+    list_display_ukuran_file_soal.short_description = "Ukuran"
     
     def __str__(self):
         return self.file_soal.name

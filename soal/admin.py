@@ -36,12 +36,20 @@ class UserAdminGroup(UserAdmin):
     pass
 
 class ModelAdminSoal(ModelAdmin):
-    pass
+    list_display = [
+        'list_display_nama_soal', 'list_display_tipe_file_soal',
+        'list_display_ukuran_file_soal','tanggal', 'list_display_pemilik_soal',
+        'list_display_status_dekripsi_soal',
+    ]
+
+    list_display_links = None
+    view_on_site = False
+    exclude = ('file_soal', 'guru',)
 
 class ModelAdminPasswordManager(ModelAdmin):
     list_display = [
         'list_display_username_guru', 'password', 
-        'list_display_soal_guru', 'list_display_soal_guru_dekripsi'
+        'list_display_soal_guru', 'list_display_soal_guru_dekripsi',
     ]
 
 # admin site khusus TU
