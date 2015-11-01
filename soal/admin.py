@@ -42,7 +42,8 @@ class ModelAdminSoal(ModelAdmin):
         'list_display_status_dekripsi_soal',
     ]
 
-    list_display_links = None
+    list_filter = ['tanggal', 'guru', 'status']
+    
     view_on_site = False
     exclude = ('file_soal', 'guru',)
 
