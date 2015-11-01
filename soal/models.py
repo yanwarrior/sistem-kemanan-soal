@@ -37,6 +37,9 @@ class PasswordManager(models.Model):
     def __str__(self):
         return self.guru.username.username
 
+    class Meta:
+        verbose_name_plural = "Manajemen Password"
+
 class Soal(models.Model):
     file_soal = models.FileField(upload_to='documents/%Y/%m/%d')
     tanggal = models.DateTimeField(auto_now_add=True, blank=True)
