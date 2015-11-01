@@ -30,7 +30,7 @@ def file_allowed_types(object_file):
     list_of_file_allowed = [
         'application/pdf', 'application/vnd.ms-powerpoint',
         'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
-        'application/vnd.ms-excel'
+        'application/vnd.ms-excel', 'text/plain', 'application/vnd.oasis.opendocument.text'
         
     ]
     print(object_file.content_type)

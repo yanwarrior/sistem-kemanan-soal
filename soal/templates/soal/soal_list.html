@@ -12,15 +12,21 @@
     <tr>
         <th>No</th>
         <th>Soal</th>
+        <th>Ukuran File Soal</th>
+        <th>Tipe</th>
         <th>Tanggal</th>
+        <th>Jam</th>
         <th>Status</th>
         <th>Aksi</th>
     </tr>
 {% for soal in soal_list %}
     <tr>
         <td>{{ forloop.counter }}</td>
-        <td>{{ soal.file_soal.name }}</td>
-        <td>{{ soal.tanggal|date:"D, d/M/Y" }}</td>
+        <td>{{ soal.filename }}</td>
+        <td>{{ soal.file_soal.size|filesizeformat }}</td>
+        <td>{{ soal.type_file }}</td>
+        <td>{{ soal.tanggal|date:"l, d F Y" }}</td>
+        <td>{{ soal.tanggal|time:"H:i A" }}</td>
         <td>{{ soal.status }}</th>
         <td>
             <a href="{% url 'soal:soal-delete' pk=soal.id %}"><b>Delete</b></a>

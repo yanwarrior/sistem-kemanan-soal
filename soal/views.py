@@ -17,7 +17,7 @@ from soal.models import Soal
 from soal.models import Guru
 from soal.models import PasswordManager
 from soal.forms import FormSoal
-from soal.extra.rc4 import NewFileRC4
+from soal.extra.rc4 import InstanceRC4File
 
 
 
@@ -162,7 +162,7 @@ def signal_to_encryption(sender, instance, created, **kwargs):
         print(password)
         nama_file = instance.file_soal.path
         print(nama_file)
-        NewFileRC4(data_file, password, nama_file)
+        InstanceRC4File.run(instance)
 
 def signal_to_delete_file(sender, instance, using, **kwargs):
     """

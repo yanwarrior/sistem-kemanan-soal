@@ -43,6 +43,12 @@ class Soal(models.Model):
     guru = models.ForeignKey(Guru)
     status = models.BooleanField(blank=True, default=False)
 
+    def filename(self):
+        return self.file_soal.name.split("/")[-1]
+
+    def type_file(self):
+        return self.file_soal.name.split(".")[-1]
+    
     def __str__(self):
         return self.file_soal.name
 
