@@ -1,0 +1,31 @@
+*{
+    font-family: "Arial";
+} 
+
+table {
+    border-collapse: collapse;
+    font-size: 14px;
+}
+
+
+th {
+    background-color: green;
+    color: white;
+}
+
+table, td, th {
+    border: 1px solid black;
+}
+
+table {
+    width: 100%;
+}
+
+th {
+    height: 30px;
+}
+td {
+    height: 10px;
+    padding-left: 10px;
+    vertical-align: center;
+}
