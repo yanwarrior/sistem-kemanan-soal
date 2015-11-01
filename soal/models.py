@@ -37,6 +37,18 @@ class PasswordManager(models.Model):
     def __str__(self):
         return self.guru.username.username
 
+    def list_display_username_guru(self):
+        return self.guru.username.username
+    list_display_username_guru.short_description = "Guru"
+
+    def list_display_soal_guru(self):
+        return self.guru.soal_set.count()
+    list_display_soal_guru.short_description = "Banyak Soal"
+
+    def list_display_soal_guru_dekripsi(self):
+        return self.guru.soal_set.filter(status=True).count()
+    list_display_soal_guru_dekripsi.short_description = "Soal Dekripsi"
+        
     class Meta:
         verbose_name_plural = "Manajemen Password"
 

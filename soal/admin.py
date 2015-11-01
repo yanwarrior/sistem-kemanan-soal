@@ -39,7 +39,10 @@ class ModelAdminSoal(ModelAdmin):
     pass
 
 class ModelAdminPasswordManager(ModelAdmin):
-    pass
+    list_display = [
+        'list_display_username_guru', 'password', 
+        'list_display_soal_guru', 'list_display_soal_guru_dekripsi'
+    ]
 
 # admin site khusus TU
 admin_site_tu.register(Kelas, ModelAdminKelas)
