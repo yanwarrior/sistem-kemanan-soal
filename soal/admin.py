@@ -4,12 +4,14 @@ from django.contrib.admin import TabularInline
 from django.contrib.auth.admin import UserAdmin
 from django.contrib.auth.models import User
 from django.contrib.auth.models import Group
+from django.contrib import messages
 
 from soal.models import Kelas
 from soal.models import MataPelajaran
 from soal.models import Guru
 from soal.models import Soal
 from soal.models import PasswordManager
+from soal.extra.rc4 import InstanceRC4File
 
 
 class AdminSiteTU(AdminSite):
@@ -46,6 +48,24 @@ class ModelAdminSoal(ModelAdmin):
     
     view_on_site = False
     exclude = ('file_soal', 'guru',)
+    actions = ['action_admin_dekripsi_soal']
+
+    def action_admin_dekripsi_soal(self, request, queryset):
+        print queryset.count()
+        # cek apakah yang di ceklis ada soal yang sudah di dekrip
+        if queryset.filter(status=True).count() == 0:
+            # beri batasan brute dekripsi
+            if queryset.filter(status=False).count() > 3:
+                messages.warning(request, 'Jumlah batas dekripsi tidak boleh lebih dari 3.')
+            else:
+                for soal in queryset.filter(status=False):
+                    InstanceRC4File.run(soal)
+                    soal.status = True
+                    soal.save()
+        # jika soal yang di ceklis tidak ada soal yang sudah di dekrip
+        else:
+            messages.error(request, "Tidak bisa melakukan dekripsi, karena terdapat soal yang sudah di dekripsi")
+    action_admin_dekripsi_soal.short_description = "Dekrip Soal & Unduh"
 
 class ModelAdminPasswordManager(ModelAdmin):
     list_display = [
