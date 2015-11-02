@@ -29,10 +29,32 @@
         </li>
     </ul>
 
-</div>
-       
+</div>  
 </div>
 {% endfor %}
+{% endblock %}
 
+{% block pagination %}
+{# BAGIAN PAGINATION #}
+{% if is_paginated %}
+<ul class="uk-pagination">
+{% if page_obj.has_previous %}
+    <li>
+        <span><a href="?page={{ page_obj.previous_page_number }}">Previous</a></span>
+    </li>
+{% endif %}
+    <li class="">
+        <span>Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.</span>
+    </li>
+{% if page_obj.has_next %}
+    <li>
+        <span><a href="?page={{ page_obj.next_page_number }}">Next</a></span>
+    </li>
+{% endif %}
+</ul>
+{% else %}
+    <h3>Soal Anda</h3>
+    <p>Belum Pernah Mengirim Soal</p>
+{% endif %}
 {% endblock %}
 

@@ -8,6 +8,9 @@ from django.http import Http404
 from django.core.urlresolvers import reverse
 from django.core.urlresolvers import reverse_lazy
 from django.core.exceptions import SuspiciousFileOperation
+from django.core.paginator import Paginator
+from django.core.paginator import EmptyPage
+from django.core.paginator import PageNotAnInteger
 from django.utils import timezone
 from django.conf import settings
 from django.db.models.signals import post_save
@@ -28,6 +31,7 @@ class SoalListView(ListView):
     """
     model = Soal
     template_name = "soal/soal_list.html"
+    paginate_by = 10
     
     
     def get_context_data(self, **kwargs):
@@ -37,7 +41,19 @@ class SoalListView(ListView):
         from model Soal to show in template.
         """
         context = super(SoalListView, self).get_context_data(**kwargs)
-        soal = Soal.objects.filter(guru__username=self.request.user)
+        
+
+        list_soal = Soal.objects.filter(guru__username=self.request.user)
+        paginator = Paginator(list_soal, self.paginate_by)
+
+        page = self.request.GET.get('page')
+
+        try:
+            soal = paginator.page(page)
+        except PageNotAnInteger:
+            soal = paginator.page(1)
+        except EmptyPage:
+            soal = paginator.page(paginator.num_pages)
         context['soal_list'] = soal
         context['guru'] = self.request.user
         return context
