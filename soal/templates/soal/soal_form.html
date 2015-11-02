@@ -2,8 +2,10 @@
 
 {# CONTENT #}
 {% block content %}
-<form action="" method="post" enctype="multipart/form-data">{% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Create" />
-</form>
+<div class="uk-form-file">
+    <form action="" method="post" enctype="multipart/form-data">{% csrf_token %}
+    {{ form.file_soal }}
+    <input class="uk-button" type="submit" value="Upload Soal" />
+    </form>
+</div>
 {% endblock %}
