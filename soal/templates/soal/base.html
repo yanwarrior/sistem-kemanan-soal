@@ -6,9 +6,8 @@
     <title>{% block title %}Sistem Keamanan Soal{% endblock %}</title>
     <link rel="shortcut icon" href="{% static 'soal/images/logo.png' %}" type="image/x-icon">
     <link rel="apple-touch-icon-precomposed" href="{% static 'soal/images/logo.png' %}">
-    <link rel="stylesheet" href="{% static 'soal/uikit/css/uikit.min.css' %}">
-    <script src="{% static 'soal/jquery/jquery.js' %}"></script>
-    <script src="{% static 'soal/uikit/js/uikit.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'soal/uikit/css/uikit.css' %}">
+    
 </head>
 <body>
     <div class="uk-container uk-container-center uk-margin-top uk-margin-large-bottom">
@@ -27,6 +26,8 @@
     {% endblock %}
     </div>
     </div>
-    
+
+    <script src="{% static 'soal/jquery/jquery.js' %}"></script>
+    <script src="{% static 'soal/uikit/js/uikit.js' %}"></script>
 </body>
 </html>

@@ -11,17 +11,7 @@
 {% for soal in soal_list %}
 <div class="uk-width-1-4" data-uk-grid="{gutter: 20}" >
 <div class="uk-panel uk-panel-box uk-panel-divider">
-
-    <div class="uk-panel-badge">
-    {% if soal.status %}
-    <i class="uk-text-success uk-text-large uk-icon-unlock"></i>  
-    <a href="{% url 'soal:soal-delete' pk=soal.id %}"><b><i class="uk-icon-remove"></i></b></a>
-    {% else %}
-    <i class="uk-text-danger uk-text-large uk-icon-lock"></i>  
-    <a href="{% url 'soal:soal-delete' pk=soal.id %}"><b><i class="uk-icon-remove"></i></b></a> 
-    {% endif %}
-    </div>
-    
+    <a class="uk-button uk-button-danger uk-button-mini" href="{% url 'soal:soal-delete' pk=soal.id %}"><b><i class="uk-icon-remove"></i></b></a>
     <ul class="uk-list uk-list-line">
         <li><strong><i class="uk-icon-file-{{ soal.type_file }}-o" ></i> {{ soal.filename|upper }}</strong></li>
         <li>
@@ -29,8 +19,16 @@
             {{ soal.tanggal|date:"l, d F Y" }} | {{ soal.tanggal|time:"H:i A" }}
             </small>
         </li>
-        <li>{{ soal.file_soal.size|filesizeformat }}</li>
+        <li>
+            {{ soal.file_soal.size|filesizeformat }}
+            {% if soal.status %}
+            <i class="uk-text-success uk-text-large uk-icon-unlock"></i>   
+            {% else %}
+            <i class="uk-text-warning uk-text-large uk-icon-lock"></i>  
+            {% endif %}
+        </li>
     </ul>
+
 </div>
        
 </div>

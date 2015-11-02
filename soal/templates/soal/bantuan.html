@@ -1,0 +1,104 @@
+{% extends 'soal/base.html' %}
+
+{% block content %}
+<div class="uk-width-medium-3-4">
+    <h2 id="MembuatAkunGuru">Membuat Akun Guru</h2>
+    <p>
+    Untuk pertama kalinya sebelum menggunakan sistem ini, anda perlu
+    membuat akun. demi menjaga keamanan, akun tidak bisa dibuat sendiri oleh anda. 
+    hubungi bagian Tata Usaha dan Administrator untuk membuat akun. jika akun anda telah
+    terdaftar, anda akan diberikan <code>username</code> dan <code>password</code> oleh
+    pihak Administrator. username dan password tersebut anda gunakan
+    untuk masuk ke sistem ini. jaga akun anda baik-baik. jika anda lupa password, 
+    silahkan hubungi pihak yang berwenang, yaitu pihak Administrator.
+    </p>
+
+    <h2 id="LoginKeDalamSistem">Bagaimana Caranya Login Ke Sistem ?</h2>
+    <p>
+    Jika anda telah menerima username dan password dari pihak Administrator, akun
+    anda sudah bisa digunakan untuk menggunakan sistem ini secara sah. bagaimana 
+    caranya untuk masuk ke sistem dan menggunakan sistem ini ? pertama, anda perlu
+    mengakses link login di sini (<a href="{% url 'login' %}" target="_blank">login</a>).
+    pada halaman login, masukan <code>username</code> dan <code>password</code> anda, lalu
+    klik tombol <code>Login</code>. jika login berhasil, andan akan di bawa ke halaman
+    <code>home</code> dan itu berarti anda bisa menggunakan sistem ini untuk mengirim
+    file-file soal.
+    </p>
+
+    <h2 id="FiturUtama">Fitur Utama</h2>
+    <p>
+    halaman home tersedia untuk anda jika anda berhasil login ke dalam sistem
+    menggunakan username dan password anda. jika terjadi masalah pada saat
+    anda login, anda bisa menghubungi pihak <code>Administrator</code>
+    atau bisa langsung menghubungi bagian <code>Tata Usaha</code>. 
+    setelah anda memasuki halaman home untuk pertama kalinya, mungkin
+    halaman home anda kosong. itu dikarenakan anda belum pernah melakukan
+    <code>pengiriman soal</code>. di halaman home ada empat menu utama yang
+    berada di bagian atas. menu-menu tersebut merupakan fasilitas dasar
+    yang meliputi apa saja yang bisa anda lakukan dengan sistem ini. 
+    menu-menu tersebut terdiri dari :
+        <dl class="uk-description-list-horizontal">
+        <dt>Halaman Home</dt>
+        <dd>
+            Halaman utama, halaman ini berisi list-list soal dalam bentuk box.
+            konten pada box berisi informasi soal yang anda upload dengan status
+            <code>enkripsi</code> dan <code>dekripsi</code>. status <code>enkripsi</code>
+            bisa di simbolkan dengan gambar icon <i class="uk-icon-lock"></i> dan
+            status <code>dekripsi</code> bisa di simbolkan dengan gambar icon <i class="uk-icon-unlock">
+            </i>. simbol-simbol tersebut memiliki arti masing-masing. untuk simbol <i class="uk-icon-lock"></i>
+            itu berarti soal yang anda upload telah di enkripsi oleh sistem, sedangkan
+            untuk simbol <i class="uk-icon-unlock"></i> itu berarti soal anda sudah
+            di dekripsi oleh bagian <code>Tata Usaha</code>.
+        </dd>
+        <dt>Kirim/Upload Soal</dt>
+        <dd>
+            Halaman sekaligus fitur penting dalam sistem ini yang kami berikan
+            untuk anda dalam mengirim soal-soal ujian dan membuatnya lebih aman
+            dengan kriptografi. anda bisa memanfaatkan fitur ini dengan menekan menu
+            bagian atas pada <code>Kirim Soal</code>. selama pengiriman, file soal
+            anda akan di enkripsi oleh kriptografi dan password manager yang dibuat
+            oleh <code>Administrator</code>.
+        </dd>
+        <dt>Keluar</dt>
+        <dd>
+            Jika anda telah menyelesaikan tugas anda, harap segera keluar dari sistem anda.
+            fitur ini digunakan untuk mengamankan data-data anda dari pihak yang tidak bertanggung
+            jawab. anda bisa menekan menu <code>Keluar</code>, dengan begitu sistem ini
+            akan mengunci semua data-data anda dari akses yang tidak berwenang sampe anda 
+            melakukan login kembali.
+        </dd>
+        </dl>
+    </p>
+
+    <h2 id="PasswordManager">Password Manager</h2>
+    <p>
+    selama anda mengupload soal-soal yang akan di berikan ke bagian <code>Tata Usaha</code>
+    file-file tersebut akan di enkrip dengan Algoritma RC4 demi keamanan soal-soal anda
+    agar tidak bocor ke pihak yang tidak berwenang. pengenkripsian dilakukan otomatis oleh
+    sistem kami dengan menggunakan password. mungkin anda bertanya-tanya mana password 
+    untuk mengenkripsi file anda ? password untuk mengekripsi file soal-soal anda
+    di jamin dan di simpan di pihak <code>Tata Usaha</code> dan <code>Administrator</code>.
+    mengapa ? dikarenakan takut anda lupa dan takut password anda di bocorkan ke orang lain
+    tanpa sepengatahuan pihak instansi. password anda tidak mungkin sama dengan password guru lainnya.
+    dan perlu anda ketahui adalah setiap password yang anda gunakan untuk login berbeda
+    dengan password yang digunakan sistem untuk melakukan enkripsi file soal-soal anda.
+    </p>
+    
+</div>
+
+<div class="uk-width-medium-1-4">
+    <div style="height: 270px;" class="uk-sticky-placeholder" data-uk-sticky >
+        <div style="margin: 0px;" class="uk-panel uk-panel-box" >
+            <ul class="uk-nav uk-nav-side"  data-uk-scrollspy-nav="{closest:'li', smoothscroll:true}">
+            <li class="uk-nav-header">Bantuan Penggunaan Sistem</li>
+            <li class="uk-active"><a href="#MembuatAkunGuru">Membuat Akun Guru</a></li>
+            <li class=""><a href="#LoginKeDalamSistem">Login Ke Dalam Sistem</a></li>
+            <li class=""><a href="#FiturUtama">Fitur Utama</a></li>
+            <li class=""><a href="#PasswordManager">Password Manager</a></li>
+            <li class="uk-nav-divider"></li>
+            <li class=""><a href="#faq"><i class="uk-icon-info-circle uk-margin-small-right"></i>SKS Verison 1.0.0</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}

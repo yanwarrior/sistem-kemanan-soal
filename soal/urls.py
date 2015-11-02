@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse_lazy
 from django.conf import settings
 from django.conf.urls.static import static
+from django.views.generic import TemplateView
 
 from . import views
 
@@ -40,4 +41,15 @@ urlpatterns = [
         ),
         # nama reverse uri soal:soal-create
         name='soal-create'),
+
+    url(
+        # uri http://localhost:8000/soal/bantuan
+        r'^soal/bantuan/$',
+        login_required(
+            TemplateView.as_view(template_name="soal/bantuan.html"),
+            login_url=reverse_lazy('login')
+        ),
+        # nama reverse uri soal:soal-bantuan
+        name='soal-bantuan'),
+    
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) 

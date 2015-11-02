@@ -1,16 +1,30 @@
+
 <nav class="uk-navbar uk-margin-large-bottom">
     <a class="uk-navbar-brand uk-hidden-small" href="#">
         <i class="uk-icon-user"></i> {{ request.user.username }}</a>
         <ul class="uk-navbar-nav uk-hidden-small">
+            {% if not request.user.is_staff %}
             <li class="{% block active_home %}{% endblock %}">
                 <a href="{% url 'soal:soal-view' %}">Home</a>
             </li>
             <li class="{% block active_kirim_soal %}{% endblock %}">
                 <a href="{% url 'soal:soal-create' %}">Kirim Soal</a>
             </li>
+            <li class="{% block active_bantuan %}{% endblock %}">
+                <a href="{% url 'soal:soal-bantuan' %}">Bantuan</a>
+            </li>
             <li class="{% block active_keluar %}{% endblock %}">
                 <a href="{% url 'logout' %}">Keluar</a>
             </li>
+            {% else %}
+            <li class="">
+                <a href="{% url 'adminsitetu:index' %}">Halaman Admin</a>
+            </li>
+            <li class="">
+                <a href="{% url 'adminsitetu:logout' %}">Keluar</a>
+            </li>
+            {% endif %}
+            
         </ul>
     <a href="#offcanvas" class="uk-navbar-toggle uk-visible-small" data-uk-offcanvas=""></a>
     <div class="uk-navbar-brand uk-navbar-center uk-visible-small">Brand</div>
