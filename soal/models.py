@@ -61,11 +61,23 @@ class Soal(models.Model):
     status = models.BooleanField(blank=True, default=False)
 
     def filename(self):
-        return self.file_soal.name.split("/")[-1]
+        soal = self.file_soal.name.split("/")[-1]
+        soal = soal.replace("_", " ")
+        return soal.split(".")[0]
 
     def type_file(self):
-        return self.file_soal.name.split(".")[-1]
-
+        ext = self.file_soal.name.split(".")[-1]
+        if ext == "pdf":
+            return "pdf"
+        if ext in ["docx", "doc"]:
+            return "word"
+        if ext.lower() in ["jpeg", "jpg", "png", "gif"]:
+            return "image"
+        if ext.lower() == "odt":
+            return "word"
+        else:
+            return "text"
+    
     def list_display_nama_soal(self):
         return self.file_soal.name.split("/")[-1]
     list_display_nama_soal.short_description = "Soal"

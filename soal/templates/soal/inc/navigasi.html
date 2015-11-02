@@ -1,11 +1,17 @@
-<ul>
-    <li>
-        <a href="{% url 'soal:soal-view' %}">Home</a>
-    </li>
-    <li>
-        <a href="{% url 'soal:soal-create' %}">Kirim Soal</a>
-    </li>
-    <li>
-        <a href="{% url 'logout' %}">Keluar</a>
-    </li>
-</ul>
+<nav class="uk-navbar uk-margin-large-bottom">
+    <a class="uk-navbar-brand uk-hidden-small" href="layouts_frontpage.html">
+        <i class="uk-icon-user"></i> {{ request.user.username }}</a>
+        <ul class="uk-navbar-nav uk-hidden-small">
+            <li class="{% block active_home %}{% endblock %}">
+                <a href="{% url 'soal:soal-view' %}">Home</a>
+            </li>
+            <li class="{% block active_kirim_soal %}{% endblock %}">
+                <a href="{% url 'soal:soal-create' %}">Kirim Soal</a>
+            </li>
+            <li class="{% block active_keluar %}{% endblock %}">
+                <a href="{% url 'logout' %}">Keluar</a>
+            </li>
+        </ul>
+    <a href="#offcanvas" class="uk-navbar-toggle uk-visible-small" data-uk-offcanvas=""></a>
+    <div class="uk-navbar-brand uk-navbar-center uk-visible-small">Brand</div>
+</nav>

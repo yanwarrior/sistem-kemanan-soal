@@ -7,32 +7,34 @@
 
 {# untuk block content #}
 {% block content %}
-<table border='1'>
-    <caption>List Soal - {{ request.user.username }}</caption>
-    <tr>
-        <th>No</th>
-        <th>Soal</th>
-        <th>Ukuran File Soal</th>
-        <th>Tipe</th>
-        <th>Tanggal</th>
-        <th>Jam</th>
-        <th>Status</th>
-        <th>Aksi</th>
-    </tr>
+
 {% for soal in soal_list %}
-    <tr>
-        <td>{{ forloop.counter }}</td>
-        <td>{{ soal.filename }}</td>
-        <td>{{ soal.file_soal.size|filesizeformat }}</td>
-        <td>{{ soal.type_file }}</td>
-        <td>{{ soal.tanggal|date:"l, d F Y" }}</td>
-        <td>{{ soal.tanggal|time:"H:i A" }}</td>
-        <td>{{ soal.status }}</th>
-        <td>
-            <a href="{% url 'soal:soal-delete' pk=soal.id %}"><b>Delete</b></a>
-        </td>
-    </tr>
+<div class="uk-width-1-4" data-uk-grid="{gutter: 20}" >
+<div class="uk-panel uk-panel-box uk-panel-divider">
+
+    <div class="uk-panel-badge">
+    {% if soal.status %}
+    <i class="uk-text-success uk-text-large uk-icon-unlock"></i>  
+    <a href="{% url 'soal:soal-delete' pk=soal.id %}"><b><i class="uk-icon-remove"></i></b></a>
+    {% else %}
+    <i class="uk-text-danger uk-text-large uk-icon-lock"></i>  
+    <a href="{% url 'soal:soal-delete' pk=soal.id %}"><b><i class="uk-icon-remove"></i></b></a> 
+    {% endif %}
+    </div>
+    
+    <ul class="uk-list uk-list-line">
+        <li><strong><i class="uk-icon-file-{{ soal.type_file }}-o" ></i> {{ soal.filename|upper }}</strong></li>
+        <li>
+            <small>
+            {{ soal.tanggal|date:"l, d F Y" }} | {{ soal.tanggal|time:"H:i A" }}
+            </small>
+        </li>
+        <li>{{ soal.file_soal.size|filesizeformat }}</li>
+    </ul>
+</div>
+       
+</div>
 {% endfor %}
-</table>
+
 {% endblock %}
 
