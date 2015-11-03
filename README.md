@@ -5,22 +5,22 @@ dikarenkan Python 3 bentrok di bagian `Library Native RC4` yang ada di sini untu
 
 ## Fitur Utama
 fitur utama yang tersedia di dalam web apps ini terdiri dari :
-    * Enkripsi dan Dekripsi cepat dengan `Algoritma RC4` untuk mengamankan soal-soal ujian.
-    * User `Administrator` dan User `Tata Usaha` serta peranan masing-masing dalam pengelolaan soal.
-    * User `Guru` dan halaman khusus untuk screen guru.
-    * `Kirim Soal` fitur yang tersedia untuk guru untuk mengirim Soal secara aman ke bagian user `Tata Usaha`.
-    * `Login` dan `Logout` semua user (Guru, Administrator dan Tata Usaha) ke dalam sistem. 
-    * Setiap User memiliki batas permissionnya masing-masing dari apa yang boleh ia lakukan di dalam sistem.
-    * `Penghapusan Soal` yang diberikan wewenang terhadap guru di halaman dashboardnya. 
-    * `Pencarian` dan `Pagination`.
-    * Look And Feel serta mudah dioperasikan. 
-    * Free
-    * Kapasitas ukuran soal yang dikirim secara default 5 MiB.
-    * Kapasitas ukuran soal yang dikirm bisa di atur batasnya. 
-    * Pengecekan dan Validasi Tipe file soal berdasarkan `content type`. 
-    * Bisa mengatur file apa saja yang boleh di upload dan file apa saja yang tidak boleh. 
-    * Setup dan Pengaturan Mudah. 
-    * Terdedia sistem manajemen pengelolaan password yang diberikan untuk `Administrator` dan `Tata Usaha`.
+* Enkripsi dan Dekripsi cepat dengan `Algoritma RC4` untuk mengamankan soal-soal ujian.
+* User `Administrator` dan User `Tata Usaha` serta peranan masing-masing dalam pengelolaan soal.
+* User `Guru` dan halaman khusus untuk screen guru.
+* `Kirim Soal` fitur yang tersedia untuk guru untuk mengirim Soal secara aman ke bagian user `Tata Usaha`.
+* `Login` dan `Logout` semua user (Guru, Administrator dan Tata Usaha) ke dalam sistem. 
+* Setiap User memiliki batas permissionnya masing-masing dari apa yang boleh ia lakukan di dalam sistem.
+* `Penghapusan Soal` yang diberikan wewenang terhadap guru di halaman dashboardnya. 
+* `Pencarian` dan `Pagination`.
+* Look And Feel serta mudah dioperasikan. 
+* Free
+* Kapasitas ukuran soal yang dikirim secara default 5 MiB.
+* Kapasitas ukuran soal yang dikirm bisa di atur batasnya. 
+* Pengecekan dan Validasi Tipe file soal berdasarkan `content type`. 
+* Bisa mengatur file apa saja yang boleh di upload dan file apa saja yang tidak boleh. 
+* Setup dan Pengaturan Mudah. 
+* Terdedia sistem manajemen pengelolaan password yang diberikan untuk `Administrator` dan `Tata Usaha`.
 
 ## Required
 * Python 2.7
