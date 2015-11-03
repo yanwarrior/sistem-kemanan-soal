@@ -19,3 +19,15 @@ class FormSoal(forms.ModelForm):
     class Meta:
         model = Soal
         exclude = ('tanggal','guru', 'status')
+
+
+class FormPencarianSoal(forms.Form):
+
+    nama_soal = forms.CharField(max_length=30, 
+        widget=forms.TextInput(
+            attrs={
+                    'class':'uk-search-field', 
+                    'type':'search',
+                }
+            )
+        )

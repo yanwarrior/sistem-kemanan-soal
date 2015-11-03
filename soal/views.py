@@ -32,7 +32,8 @@ class SoalListView(ListView):
     model = Soal
     template_name = "soal/soal_list.html"
     paginate_by = 10
-    
+
+    q = ""
     
     def get_context_data(self, **kwargs):
         """                                                        
@@ -41,23 +42,29 @@ class SoalListView(ListView):
         from model Soal to show in template.
         """
         context = super(SoalListView, self).get_context_data(**kwargs)
-        
-
-        list_soal = Soal.objects.filter(guru__username=self.request.user)
+        q = ""
+        if self.request.GET.get('q'):
+            q = self.request.GET.get('q')
+            list_soal = Soal.objects.filter(guru__username=self.request.user, file_soal__icontains=q)
+        else:
+            list_soal = Soal.objects.filter(guru__username=self.request.user)
+            
         paginator = Paginator(list_soal, self.paginate_by)
-
         page = self.request.GET.get('page')
-
+        
         try:
             soal = paginator.page(page)
         except PageNotAnInteger:
             soal = paginator.page(1)
         except EmptyPage:
             soal = paginator.page(paginator.num_pages)
+            
         context['soal_list'] = soal
         context['guru'] = self.request.user
+        context['q'] = q
         return context
 
+    
     def dispatch(self, request, *args, **kwargs):
         """
         jika staff login ke halaman guru,
