@@ -3,6 +3,8 @@
 Sistem Keamanan Soal Untuk Sekolah, menggunakan `Algoritma RC4` pada `Django` dan `Python 2.7`, 
 dikarenkan Python 3 bentrok di bagian `Library Native RC4` yang ada di sini untuk membaca File.
 
+![Alt text](https://yanwarsky.files.wordpress.com/2015/11/stable-release.png)
+
 ## Fitur Utama
 fitur utama yang tersedia di dalam web apps ini terdiri dari :
 * Enkripsi dan Dekripsi cepat dengan `Algoritma RC4` untuk mengamankan soal-soal ujian.
