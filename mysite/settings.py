@@ -107,3 +107,18 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 LOGIN_REDIRECT_URL = '/'
+
+# Konfigurasi Tambahan
+MORPYN_FILE_ALLOW = [
+    'application/pdf', 
+    'application/vnd.ms-powerpoint',
+    'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+    'application/vnd.ms-excel', 
+    'text/plain', 
+    'application/vnd.oasis.opendocument.text'
+]
+
+MORPYN_FILE_SIZE_MAX = 5242880 # 5mb
+
+
+

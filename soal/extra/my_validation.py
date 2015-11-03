@@ -1,4 +1,5 @@
 from django.core.exceptions import ValidationError
+from django.conf import settings
 
 def file_allowed_types(object_file):
     """
@@ -27,26 +28,22 @@ def file_allowed_types(object_file):
         InMemoryUploadedFile
         -------------------- 
     """
-    list_of_file_allowed = [
-        'application/pdf', 'application/vnd.ms-powerpoint',
-        'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
-        'application/vnd.ms-excel', 'text/plain', 'application/vnd.oasis.opendocument.text'
-        
-    ]
+
     print(object_file.content_type)
     pesan_error = "File '{}' tidak di dukung dalam sistem ini !"
-    if object_file.content_type not in list_of_file_allowed:
+    if object_file.content_type not in settings.MORPYN_FILE_ALLOW:
         raise ValidationError(pesan_error.format(object_file.name))
     
 
 def file_allowed_size(object_file):
     # batas 5242880 kb atau 5mb
     size = object_file.size
-    batas = 5242880
+    batas = settings.MORPYN_FILE_SIZE_MAX
     pesan_error = "Ukuran File '{}' melebihi batas maksimal !"
     if size > batas:
         raise ValidationError(pesan_error.format(object_file.name))
 
+# deprecated
 def password_allowed_size(value):
     pesan_error = "Password '{}' harus diatas 5 dan kurang dari 8 karaketer"
     if len(value) > 8 or len(value) < 5:
