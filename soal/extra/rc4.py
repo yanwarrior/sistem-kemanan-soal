@@ -38,11 +38,11 @@ class RC4File(object):
         self.password = password
 
     def __read(self):
-        with open(self.resources, "r+") as f:
+        with open(self.resources, "rb") as f:
             self.data = f.read()
 
     def __write(self):
-        with open(self.target, "w+") as f:
+        with open(self.target, "wb") as f:
             f.write(self.mix_data)
 
     def run(self):
